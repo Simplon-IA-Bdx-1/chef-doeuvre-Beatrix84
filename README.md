@@ -2,15 +2,24 @@
 
 ## ML codebase 
 
-|-- README.md
+|-- README.md 
+
 |-- api
+
 |-- configs
+    
     |-- environments.yml
+
 |-- data
+    
     |-- ADNI_data
+    
     |-- sample
+
 |-- models
+
 |-- notebooks
+
 |-- requirements.txt 
 
 
