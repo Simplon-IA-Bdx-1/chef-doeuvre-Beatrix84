@@ -212,4 +212,6 @@ $RECYCLE.BIN/
 *.csv
 *.nii
 *.npy
+
 /data/*"# chef-doeuvre-Beatrix84" 
+/models/*"# chef-doeuvre-Beatrix84" 
