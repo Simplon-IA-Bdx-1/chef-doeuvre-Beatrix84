@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- English doesn't work -->
+  <head>
+    <meta charset="utf-8" />
+    <title>Cerebro</title>
+    <style>
+      body {
+        /* background-image: url("https://zupimages.net/up/20/52/buvi.jpg"); */
+        background-image: url("https://zupimages.net/up/21/08/ubgr.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: contain;
+        background-position: center;
+        width: 100%;
+        height: auto;
+      }
+
+      div.transbox {
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-top: 5%;
+        background-color: #ffffff;
+        border: 1px solid black;
+        opacity: 0.8;
+      }
+
+      div.transbox p {
+        margin: 5%;
+        font-weight: bold;
+        color: #000000;
+      }
+
+      h1 {
+        text-align: center;
+        color: rgb(71, 69, 69);
+      }
+
+      p {
+        text-align-last: center;
+      }
+      form {
+        text-align-last: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="transbox">
+      <h1>Cerebro</h1>
+
+      <form method="POST" action="" enctype="multipart/form-data">
+        <!-- <input type="hidden" name="filename" value="ADNI_002_S" /> -->
+
+        <p>Doctor:<select name="j" method="GET">
+            {% for j in doclist -%}
+              <option  value="{{j[0]}}">{{j[1]}}</option>
+            {% endfor %}
+        </select>
+        </p>
+
+    
+
+
+        <label for="gender">Gender</label>
+        <select name="gender">
+          <option value="F" selected>F</option>
+          <option value="M">M</option>
+        </select>
+
+        <label for="birthday">Birthday:</label>
+        <input type="date" class="form-control" name="birthday" required />
+
+        <label for="date">Date</label>
+        <input type="date" class="form-control" name="date" required />
+        <p><input type="file" name="file" /></p>
+        <!-- try to align with previous p -->
+        <p><input type="submit" value="Submit" /></p>
+      </form>
+    </div>
+  </body>
+</html>
+

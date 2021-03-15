@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<!-- English doesn't work -->
+  <head>
+    <meta charset="utf-8" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <title>Cerebro</title>
+    
+    <style>
+    body {
+        background-image: url("https://zupimages.net/up/21/08/ubgr.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: contain;
+        background-position: center;
+        width: 100%;
+        height: auto;
+        }
+    div.transbox {
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-top: 5%;
+        background-color: #ffffff;
+        border: 1px solid black;
+        opacity: 0.8;
+        }
+
+    div.transbox p {
+        margin: 5%;
+        font-weight: bold;
+        color: #000000;
+        }
+
+    td {
+        width: 150px;
+        text-align: center;
+        border: 1px solid black;
+        padding: 5px;
+        }
+
+    table.center {
+        margin-left: auto; 
+        margin-right: auto;
+        margin-bottom: 5%;
+        }
+    th {
+      text-align: center;
+      }
+    h4 {text-align: center; color: rgb(71, 69, 69);}
+
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Alzheimer Prediction</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">New prediction</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="transbox">
+      <h4>{{Prediction}} % {{Text}}</h4>
+      
+      <table class="center">
+        <thead>
+          <tr>
+              <th>Patient ID</th>
+              <th>Date</th>
+              <th>Group</th>
+          </tr>
+          </thead>    
+          <tbody>
+           {% for row in data %}    
+                  <tr>
+                      <td>{{row[0]}}</td>
+                      <td>{{row[1]}}</td>
+                      <td>{{row[2]}}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      
+    </div>
+
+  </body>
