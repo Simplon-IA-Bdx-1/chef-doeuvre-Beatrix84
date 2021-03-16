@@ -17,8 +17,8 @@
       }
 
       div.transbox {
-        margin-left: 30%;
-        margin-right: 30%;
+        margin-left: 20%;
+        margin-right: 20%;
         margin-top: 5%;
         background-color: #ffffff;
         border: 1px solid black;
@@ -52,7 +52,7 @@
       <form method="POST" action="" enctype="multipart/form-data">
         <!-- <input type="hidden" name="filename" value="ADNI_002_S" /> -->
 
-        <p>Doctor:<select name="j" method="GET">
+        <p>Docteur:<select name="j" method="GET">
             {% for j in doclist -%}
               <option  value="{{j[0]}}">{{j[1]}}</option>
             {% endfor %}
@@ -62,13 +62,13 @@
     
 
 
-        <label for="gender">Gender</label>
+        <label for="gender">Sex</label>
         <select name="gender">
           <option value="F" selected>F</option>
           <option value="M">M</option>
         </select>
 
-        <label for="birthday">Birthday:</label>
+        <label for="birthday">Date de naissance:</label>
         <input type="date" class="form-control" name="birthday" required />
 
         <label for="date">Date</label>

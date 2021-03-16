@@ -29,7 +29,7 @@ mysql = MySQL(app)
 def index():
     #Ask the database to show the list of doctors
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT Doctor_id, Lastname FROM Doctor')
+    cursor.execute('SELECT Id_docteur, Nom FROM Docteurs')
     doclist = cursor.fetchall() 
     #print(doclist)
     return render_template('index.html', doclist=doclist)
@@ -72,14 +72,14 @@ def predict():
 
     #How to show the prediction
     if reponse == 0:
-        show = 'Patient with Alzheimer disease'
-        print("Patient with Alzheimer disease")
+        show = 'Patient avec Alzheimer'
+        print("Patient avec Alzheimer")
     elif reponse == 1:
-        show = 'Healthy'
-        print("Healthy")
+        show = 'Patient sain'
+        print("Patient sain")
     else:
-        show = 'Patient with Mild Cognitive Impairment'
-        print("Patient with Mild Cognitive Impairment")
+        show = 'Patient avec un déficit cognitif léger'
+        print("Patient avec déficit cognitif léger")
     
     #Data request from web page 
     if request.method == 'POST':
@@ -103,17 +103,17 @@ def predict():
 
         #Insert into mysql tables
         cursor = mysql.connection.cursor()
-        cursor.execute ('''SELECT EXISTS(SELECT 1 FROM Patient WHERE Patient_id =%s)''',(patient_id,))
+        cursor.execute ('''SELECT EXISTS(SELECT 1 FROM Patients WHERE Id_patient =%s)''',(patient_id,))
         result = cursor.fetchone()[0]
         print(result)
         
         if result == 0 :
-            cursor.execute(''' INSERT INTO Patient VALUES(%s,%s,%s, %s)''',(patient_id, gender, birth, doc))
+            cursor.execute(''' INSERT INTO Patients VALUES(%s,%s,%s, %s)''',(patient_id, gender, birth, doc))
         
-        cursor.execute(''' INSERT INTO Brain_scanner (`Patient_id`, `Image_path`, `Date`, `Group`) VALUES((SELECT Patient_id FROM Patient WHERE Patient_id=%s),%s,%s,%s)''',(patient_id, filename, date, group))
+        cursor.execute(''' INSERT INTO Scanner_cerebral (`Id_patient`, `Image`, `Date`, `Groupe`) VALUES((SELECT Id_patient FROM Patients WHERE Id_patient=%s),%s,%s,%s)''',(patient_id, filename, date, group))
         mysql.connection.commit()
     
-        cursor.execute ('''SELECT `Patient_id`,`Date`, `Group` FROM Brain_scanner WHERE Patient_id =%s''',(patient_id,))
+        cursor.execute ('''SELECT `Id_patient`,`Date`, `Groupe` FROM Scanner_cerebral WHERE Id_patient =%s''',(patient_id,))
         data = cursor.fetchall()
         cursor.close()
         print("Loaded into the followup tables!")
