@@ -1,17 +1,17 @@
-CREATE TABLE `Patient` (
-	`Patient_id` varchar(50) NOT NULL,
-	`Gender` varchar(1) NOT NULL,
-	`Birthday` DATE NOT NULL,
-	`Doctor_id` INT NOT NULL,
-	PRIMARY KEY (`Patient_id`)
+CREATE TABLE `Patients` (
+	`Id_patient` varchar(50) NOT NULL,
+	`Sex` varchar(1) NOT NULL,
+	`Date_de_naissance` DATE NOT NULL,
+	`Id_docteur` INT NOT NULL,
+	PRIMARY KEY (`Id_patient`)
 );
 
-CREATE TABLE `Brain_scanner` (
+CREATE TABLE `Scanner_cerebral` (
 	`Id` INT NOT NULL AUTO_INCREMENT,
-	`Patient_id` varchar(50) NOT NULL,
-	`Image_path` varchar(255) NOT NULL,
+	`Id_patient` varchar(50) NOT NULL,
+	`Image` varchar(255) NOT NULL,
 	`Date` DATE NOT NULL,
-	`Group` varchar(5) NOT NULL,
+	`Groupe` varchar(5) NOT NULL,
 	PRIMARY KEY (`Id`)
 );
 
@@ -44,14 +44,14 @@ CREATE TABLE `Models_list` (
 	PRIMARY KEY (`Model_name`)
 );
 
-CREATE TABLE `Doctor` (
-	`Doctor_id` INT NOT NULL AUTO_INCREMENT,
-	`Firstname` varchar(255) NOT NULL,
-	`Lastname` varchar(255) NOT NULL,
-	PRIMARY KEY (`Doctor_id`)
+CREATE TABLE `Docteurs` (
+	`Id_docteur` INT NOT NULL AUTO_INCREMENT,
+	`Prenom` varchar(255) NOT NULL,
+	`Nom` varchar(255) NOT NULL,
+	PRIMARY KEY (`Id_docteur`)
 );
 
-ALTER TABLE `Patient` ADD CONSTRAINT `Patient_fk0` FOREIGN KEY (`Doctor_id`) REFERENCES `Doctor`(`Doctor_id`);
+ALTER TABLE `Patients` ADD CONSTRAINT `Patients_fk0` FOREIGN KEY (`Id_docteur`) REFERENCES `Docteurs`(`Id_docteur`);
 
-ALTER TABLE `Brain_scanner` ADD CONSTRAINT `Brain_scanner_fk0` FOREIGN KEY (`Patient_id`) REFERENCES `Patient`(`Patient_id`);
+ALTER TABLE `Scanner_cerebral` ADD CONSTRAINT `Scanner_cerebral_fk0` FOREIGN KEY (`Id_patient`) REFERENCES `Patients`(`Id_patient`);
 
